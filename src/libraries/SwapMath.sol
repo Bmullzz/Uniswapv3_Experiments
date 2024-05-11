@@ -30,18 +30,18 @@ library SwapMath {
         int256 amountRemaining,
         uint24 feePips
     ) internal pure returns (uint160 sqrtRatioNextX96, uint256 amountIn, uint256 amountOut, uint256 feeAmount) {
-        /**
-         * price = token1 / token0
-         * if price is decreased, token is token0
-         * if price is increased, token is token1
-         */
+        
+        // price = token1 / token0
+        // if price is decreased, token is token0
+        // if price is increased, token is token1
+         
         bool zeroForOne = sqrtRatioCurrentX96 >= sqrtRatioTargetX96;
 
-        /**
-         * check if amount remaining after swap is positive or zero
-         * - if slippage limit (sqrtRatioTargetX96) is hit, but there is still input remaining; positive amountRemaining
-         * - if slippage limit exact to the input; amountRemaining is zero
-         */
+        
+        //  check if amount remaining after swap is positive or zero
+        //  - if slippage limit (sqrtRatioTargetX96) is hit, but there is still input remaining; positive amountRemaining
+        //  - if slippage limit exact to the input; amountRemaining is zero
+        
         bool exactIn = amountRemaining >= 0;
 
         // statement sets return values sqrtRatioNextX96, amountIn, amountOut
